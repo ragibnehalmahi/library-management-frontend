@@ -1,9 +1,9 @@
-// src/pages/AllBooks.tsx
+ 
 import { useGetAllBooksQuery, useDeleteBookMutation } from '../redux/bookApi';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-// ✅ Book টাইপ ডিফাইন (যদি বাইরে থেকে import না করেন)
+ 
 interface Book {
   _id: string;
   title: string;
@@ -16,7 +16,7 @@ interface Book {
 }
 
 export default function AllBooks() {
-  // ✅ RTK Query hook
+   
   const {
     data,
     isLoading,
@@ -26,7 +26,7 @@ export default function AllBooks() {
 
   const [deleteBook] = useDeleteBookMutation();
 
-  // ✅ fallback and compatibility
+   
   const books: Book[] = Array.isArray(data)
     ? data
     : (data as any)?.data ?? [];
@@ -44,12 +44,12 @@ export default function AllBooks() {
     }
   };
 
-  // ✅ লোডিং স্টেট
+   
   if (isLoading) {
     return <p className="text-center text-lg">📦 Loading books...</p>;
   }
 
-  // ✅ এরর হ্যান্ডলিং
+ 
   if (isError) {
     return (
       <p className="text-center text-red-500 text-lg">
