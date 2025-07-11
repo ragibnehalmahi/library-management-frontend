@@ -10,7 +10,7 @@ const BorrowSummary = () => {
     refetch,
   } = useGetBorrowSummaryQuery();
 
-  // Optional: refetch on mount to make sure data is fresh
+   
   useEffect(() => {
     refetch();
   }, [refetch]);
