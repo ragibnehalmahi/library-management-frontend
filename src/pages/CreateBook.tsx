@@ -1,14 +1,22 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import  {useCreateBookMutation}  from "../redux/bookApi";
- 
+import { useCreateBookMutation } from "../redux/bookApi";
 import { toast } from "react-hot-toast";
+
+interface BookFormData {
+  title: string;
+  author: string;
+  isbn: string;
+  description: string;
+  genre: string;
+  copies: number;
+}
 
 const CreateBook = () => {
   const [addBook] = useCreateBookMutation();
   const navigate = useNavigate();
 
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<BookFormData>({
     title: "",
     author: "",
     isbn: "",
@@ -23,18 +31,19 @@ const CreateBook = () => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [name]: name === "copies" ? parseInt(value) : value,
+      [name]: name === "copies" ? Math.max(0, parseInt(value) || 0) : value,
     }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const res = await addBook({ ...formData }).unwrap();
+      await addBook(formData).unwrap();
       toast.success("Book added successfully!");
       navigate("/books");
     } catch (error) {
       toast.error("Failed to add book.");
+      console.error("Add book error:", error);
     }
   };
 
@@ -48,7 +57,7 @@ const CreateBook = () => {
           placeholder="Title"
           value={formData.title}
           onChange={handleChange}
-          className="w-full border px-3 py-2 rounded"
+          className="w-full border px-3 py-2 rounded dark:bg-gray-700 dark:text-white"
           required
         />
         <input
@@ -57,7 +66,7 @@ const CreateBook = () => {
           placeholder="Author"
           value={formData.author}
           onChange={handleChange}
-          className="w-full border px-3 py-2 rounded"
+          className="w-full border px-3 py-2 rounded dark:bg-gray-700 dark:text-white"
           required
         />
         <input
@@ -66,7 +75,7 @@ const CreateBook = () => {
           placeholder="ISBN"
           value={formData.isbn}
           onChange={handleChange}
-          className="w-full border px-3 py-2 rounded"
+          className="w-full border px-3 py-2 rounded dark:bg-gray-700 dark:text-white"
           required
         />
         <textarea
@@ -74,14 +83,15 @@ const CreateBook = () => {
           placeholder="Description"
           value={formData.description}
           onChange={handleChange}
-          className="w-full border px-3 py-2 rounded"
+          className="w-full border px-3 py-2 rounded dark:bg-gray-700 dark:text-white"
+          rows={4}
           required
-        ></textarea>
+        />
         <select
           name="genre"
           value={formData.genre}
           onChange={handleChange}
-          className="w-full border px-3 py-2 rounded"
+          className="w-full border px-3 py-2 rounded dark:bg-gray-700 dark:text-white"
           required
         >
           <option value="">Select Genre</option>
@@ -97,12 +107,12 @@ const CreateBook = () => {
           placeholder="Number of copies"
           value={formData.copies}
           onChange={handleChange}
-          className="w-full border px-3 py-2 rounded"
+          className="w-full border px-3 py-2 rounded dark:bg-gray-700 dark:text-white"
           required
         />
         <button
           type="submit"
-          className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded"
+          className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded transition-colors"
         >
           Add Book
         </button>
