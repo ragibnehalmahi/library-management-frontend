@@ -34,14 +34,14 @@ export const borrowApi = createApi({
         method: 'POST',
         body: payload,
       }),
-      invalidatesTags: ['Borrow'], // Invalidate 'Borrow' cache so summary refetches
+      invalidatesTags: ['Borrow'],  
     }),
 
     getBorrowSummary: builder.query<BorrowSummary[], void>({
       query: () => 'borrow',
       transformResponse: (response: BorrowSummaryResponse) => response.data,
-      providesTags: ['Borrow'], // Provide tag for cache tracking
-    //  refetchOnMountOrArgChange: true, // Force refetch when component mounts
+      providesTags: ['Borrow'],  
+    
     }),
   }),
 });
