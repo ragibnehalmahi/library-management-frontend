@@ -1,4 +1,4 @@
-// src/redux/api/bookApi.ts
+ 
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const bookApi = createApi({
@@ -8,7 +8,7 @@ export const bookApi = createApi({
   }),
   tagTypes: ['Books', 'Borrows'],
   endpoints: (builder) => ({
-    // Existing book endpoints...
+    
     getAllBooks: builder.query<any[], void>({
       query: () => 'books',
       providesTags: ['Books'],
@@ -41,14 +41,14 @@ export const bookApi = createApi({
       invalidatesTags: ['Books'],
     }),
     
-    // New borrow endpoints
+     
     borrowBook: builder.mutation<any, { book: string; quantity: number; dueDate: string }>({
       query: (borrowData) => ({
         url: 'borrow',
         method: 'POST',
         body: borrowData,
       }),
-      // Invalidate both Books and Borrows to refresh both lists
+      
       invalidatesTags: ['Books', 'Borrows'],
     }),
     getBorrowSummary: builder.query<any[], void>({
