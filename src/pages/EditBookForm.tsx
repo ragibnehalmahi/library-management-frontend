@@ -15,7 +15,7 @@ const EditBookForm = () => {
   const { data, isLoading, isError } = useGetBookByIdQuery(id || '');
   const [updateBook, { isLoading: isUpdating }] = useUpdateBookMutation();
 
-  const book = data?.data; // ✅ Fix here
+  const book = data?.data;  
 
   const [formData, setFormData] = useState({
     title: '',
