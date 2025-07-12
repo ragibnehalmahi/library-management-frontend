@@ -52,16 +52,14 @@ POST /api/borrow - Create borrow record
 
 GET /api/borrow - Get borrow summary
 File and folder structure:
- src/
-├── components/       # Reusable components
-├── pages/            # Application pages
-├── redux/            # RTK Query API slices
-├── types/            # TypeScript interfaces
-├── App.tsx           # Main application component
-└── main.tsx          # Application entry point
-
-
-
+ src/->components/-> Reusable components
+ pages/ ->Application pages
+ pages/ -> Application pages
+  redux/ ->RTK Query API slices
+types/ ->TypeScript interfaces
+ App.tsx  ->Main application component
+ main.tsx  ->Application entry point
+ 
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
