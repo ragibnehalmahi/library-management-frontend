@@ -1,3 +1,67 @@
+# Library Management System 📚
+A minimal library management system built with React, TypeScript, and Redux Toolkit Query (RTK Query) that allows users to manage books and track borrowings.
+## Live 
+https://library-management-frontend-8ont.vercel.app/books
+## Features ✨
+
+### Book Management
+- 📖 View all books in a responsive table
+- ➕ Add new books with validation
+- ✏️ Edit existing book details
+- 🗑️ Delete books with confirmation
+- 🔍 View detailed book information
+
+### Borrowing System
+- 📅 Borrow books with due date selection
+- 🔢 Quantity validation (can't exceed available copies)
+- 📊 View borrow summary statistics
+- ⚠️ Automatic availability updates when copies reach 0
+### Technical Highlights
+- 🚀 Optimistic UI updates for smooth user experience
+- 💅 Responsive design with Tailwind CSS
+- 🛡️ Type-safe forms and API interactions
+- 🔄 Real-time data synchronization
+- 📱 Mobile-friendly interface
+ Layer	|Technology
+Frontend |	React + TypeScript
+State Management |	Redux Toolkit + RTK Query
+Backend	| Node.js + Express.js
+Database |	MongoDB + Mongoose
+Styling |	Tailwind CSS or any basic CSS framework
+
+## Installation ⚙️
+
+1. Clone the repository
+2. Install dependencies:npm install
+3. Start the development server:npm run dev
+4. Build for production:npm run build
+
+
+API Endpoints 🌐
+The application consumes these RESTful endpoints:
+
+GET /api/books - Get all books
+
+POST /api/books - Add new book
+
+PUT /api/books/:id - Update book
+
+DELETE /api/books/:id - Delete book
+
+POST /api/borrow - Create borrow record
+
+GET /api/borrow - Get borrow summary
+File and folder structure:
+ src/
+├── components/       # Reusable components
+├── pages/            # Application pages
+├── redux/            # RTK Query API slices
+├── types/            # TypeScript interfaces
+├── App.tsx           # Main application component
+└── main.tsx          # Application entry point
+
+
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
